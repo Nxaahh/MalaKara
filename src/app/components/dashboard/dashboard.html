@@ -43,29 +43,22 @@
     <div *ngIf="!parties.length" class="alert alert-warning text-center">
       No hay eventos disponibles por ahora. ¡Pronto habrá novedades!
     </div>
-    <div class="row g-4" *ngIf="parties.length">
-      <div class="col-md-6" *ngFor="let p of parties">
-        <div class="card event-card h-100 shadow-sm border-0">
-          <div class="row g-0 h-100">
-            <div class="col-5 overflow-hidden img-col">
-              <img
-                [src]="p.photo || 'https://via.placeholder.com/400x300?text=Evento'"
-                alt="{{ p.name }}"
-                class="img-fluid h-100 object-cover"
-              />
-            </div>
-            <div class="col-7 d-flex flex-column p-3">
-              <div>
-                <div class="small text-muted mb-2">{{ p.date | date:'EEE, d MMM' }}</div>
-                <h5 class="mb-2">{{ p.name }}</h5>
-                <p class="mb-1"><strong>Lugar:</strong> {{ p.place }}</p>
-                <p class="mb-1"><strong>Hora:</strong> {{ p.startTime }} – {{ p.endTime }}</p>
-              </div>
-              <div class="mt-auto">
-                <span class="badge bg-light text-muted me-1 small">{{ p.dressCode }}</span>
-                <span class="badge bg-light text-muted me-1 small">{{ p.musicType }}</span>
-              </div>
-            </div>
+
+    <!-- Galería de eventos -->
+    <div class="gallery" *ngIf="parties.length">
+      <div class="event-card" *ngFor="let p of parties">
+        <img
+          [src]="p.photo || 'https://via.placeholder.com/400x300?text=Evento'"
+          alt="{{ p.name }}"
+        />
+        <div class="p-3">
+          <div class="small text-muted mb-2">{{ p.date | date:'EEE, d MMM' }}</div>
+          <h5 class="mb-2">{{ p.name }}</h5>
+          <p class="mb-1"><strong>Lugar:</strong> {{ p.place }}</p>
+          <p class="mb-1"><strong>Hora:</strong> {{ p.startTime }} – {{ p.endTime }}</p>
+          <div class="mt-2">
+            <span class="badge bg-light text-muted me-1 small">{{ p.dressCode }}</span>
+            <span class="badge bg-light text-muted me-1 small">{{ p.musicType }}</span>
           </div>
         </div>
       </div>
